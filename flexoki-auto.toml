@@ -1,0 +1,85 @@
+# Flexoki Light and Dark for Herdr 0.9.0+
+[theme]
+auto_switch = true
+
+[theme.custom.light]
+# Cyan is the accent; Flexoki's light appearance uses 600-level colors.
+accent = "#24837B"
+
+# bg / bg-2 separate the main canvas from the sidebar without a colored fill.
+panel_bg = "#FFFCF0"
+sidebar_bg = "#F2F0E5"
+
+# ui marks the focused workspace; ui-3 distinguishes keyboard navigation.
+active_row_bg = "#E6E4D9"
+selection_bg = "#CECDC3"
+
+# ui / ui-2 are structural grays, not text grays. Herdr also uses surface0
+# for dividers, so it must remain distinct from both background surfaces.
+surface0 = "#E6E4D9"
+surface1 = "#DAD8CE"
+# Despite its name, surface_dim draws sidebar divider lines: use ui, not bg-2.
+surface_dim = "#E6E4D9"
+
+# Herdr shares overlay0 between readable labels, inactive borders, and the
+# focused scrollbar track: base-700 favors legibility over faint decoration.
+# It is one step darker than tx-2 to help labels Herdr additionally dims.
+# overlay1 uses tx so the thumb and enabled arrows stand apart from the track
+# and disabled arrows. These two tokens must not share a color.
+overlay0 = "#575653"
+overlay1 = "#100F0F"
+
+# tx / base-700 carry primary and secondary information in light mode.
+# Keep secondary labels readable rather than using faint interface grays.
+text = "#100F0F"
+subtext0 = "#575653"
+
+# Use Flexoki's pigment ramps directly rather than opacity-derived accents.
+mauve = "#5E409D"
+green = "#66800B"
+yellow = "#AD8301"
+red = "#AF3029"
+blue = "#205EA6"
+teal = "#24837B"
+peach = "#BC5215"
+
+[theme.custom.dark]
+# Cyan is the accent; Flexoki's dark appearance uses 400-level colors.
+accent = "#3AA99F"
+
+# bg / bg-2 separate the main canvas from the sidebar without a colored fill.
+panel_bg = "#100F0F"
+sidebar_bg = "#1C1B1A"
+
+# ui marks the focused workspace; ui-3 distinguishes keyboard navigation.
+active_row_bg = "#282726"
+selection_bg = "#403E3C"
+
+# ui / ui-2 are structural grays, not text grays. Herdr also uses surface0
+# for dividers, so it must remain distinct from both background surfaces.
+surface0 = "#282726"
+surface1 = "#343331"
+# Despite its name, surface_dim draws sidebar divider lines: use ui, not bg-2.
+surface_dim = "#282726"
+
+# Herdr shares overlay0 between readable labels, inactive borders, and the
+# focused scrollbar track: base-400 favors legibility over faint decoration.
+# It is one step lighter than tx-2 to help labels Herdr additionally dims.
+# overlay1 uses tx so the thumb and enabled arrows stand apart from the track
+# and disabled arrows. These two tokens must not share a color.
+overlay0 = "#9F9D96"
+overlay1 = "#CECDC3"
+
+# tx / base-400 carry primary and secondary information in dark mode.
+# Keep secondary labels readable rather than using faint interface grays.
+text = "#CECDC3"
+subtext0 = "#9F9D96"
+
+# Use Flexoki's pigment ramps directly rather than opacity-derived accents.
+mauve = "#8B7EC8"
+green = "#879A39"
+yellow = "#D0A215"
+red = "#D14D41"
+blue = "#4385BE"
+teal = "#3AA99F"
+peach = "#DA702C"

@@ -1,5 +1,9 @@
 # Flexoki for Herdr
 
+[![CI](https://github.com/nertzy/herdr-flexoki/actions/workflows/ci.yml/badge.svg?branch=trunk)](https://github.com/nertzy/herdr-flexoki/actions/workflows/ci.yml?query=branch%3Atrunk)
+[![Latest release](https://img.shields.io/github/v/release/nertzy/herdr-flexoki)](https://github.com/nertzy/herdr-flexoki/releases/latest)
+[![License: MIT](https://img.shields.io/github/license/nertzy/herdr-flexoki)](LICENSE)
+
 Light and dark themes for [Herdr](https://herdr.dev), based on
 [Flexoki](https://stephango.com/flexoki) by Steph Ango. Warm paper backgrounds,
 inky dark surfaces, and restrained color, with cyan accents.

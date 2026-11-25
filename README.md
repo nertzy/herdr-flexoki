@@ -136,7 +136,7 @@ running inside its panes.
 From the repository directory:
 
 ```sh
-for theme in flexoki-*.toml; do
+for theme in tui/flexoki-*.toml; do
   HERDR_CONFIG_PATH="$PWD/$theme" herdr config check || exit
 done
 ```

@@ -35,21 +35,51 @@ tokens.
 In both, the light theme uses Flexoki's 600-level accent colors and the dark
 theme uses its 400-level accents.
 
-To use either, clone this repository:
+## Install
+
+Clone this repository and install with `make`, running the line for each
+program you use:
 
 ```sh
 git clone https://github.com/nertzy/herdr-flexoki.git
 cd herdr-flexoki
+make install       # Herdr (desktop app)
+make install-tui   # Herdr TUI
 ```
+
+| Command | What it does |
+|---|---|
+| `make install` | Copies both desktop app themes into Herdr's themes folder. |
+| `make install-tui` | Copies `tui/flexoki-auto.toml` into place as a new Herdr TUI configuration. It stops without changing anything when a configuration already exists. |
+| `make help` | Lists every target and the paths it writes to on your machine. |
+
+Each program then needs one more step:
+
+- **Herdr (desktop app):** choose the themes in Settings or in
+  `settings.json`; see [Set up Herdr (desktop app)](#set-up-herdr-desktop-app).
+- **Herdr TUI:** reload or launch it, or merge the theme into a configuration
+  you already have; see [Set up Herdr TUI](#set-up-herdr-tui).
+
+Both sections also give the commands to run without `make`.
 
 ## Set up Herdr (desktop app)
 
-Copy both themes into Herdr's themes folder:
+`make install` copies both themes into Herdr's themes folder:
+
+```sh
+make install
+```
+
+Without `make`, at the default location:
 
 ```sh
 mkdir -p ~/.config/herdr-app/themes
 cp app/flexoki-light.json app/flexoki-dark.json ~/.config/herdr-app/themes/
 ```
+
+Herdr's folder is `~/.config/herdr-app` by default, or
+`$XDG_CONFIG_HOME/herdr-app` when `XDG_CONFIG_HOME` is set. `HERDR_APP_HOME`
+overrides either location. `make install` follows the same rules.
 
 They appear in Settings without a restart. To follow the system appearance, set
 `theme` in `~/.config/herdr-app/settings.json` and keep your other settings:
@@ -91,16 +121,22 @@ and all `[theme.custom]` subtables with the contents of your chosen theme file.
 Keep your other settings. Do not append a second `[theme]` section: duplicate
 TOML tables are invalid.
 
-**For a fresh configuration at the default location**, copy one file into place:
+**For a fresh configuration**, copy one file into place:
+
+```sh
+make install-tui
+```
+
+Add `TUI_THEME=light` or `TUI_THEME=dark` if you prefer a fixed appearance. The
+copy replaces the whole configuration, so `make install-tui` stops without
+changing anything when a configuration already exists.
+
+Without `make`, at the default location:
 
 ```sh
 mkdir -p ~/.config/herdr
 cp tui/flexoki-auto.toml ~/.config/herdr/config.toml
 ```
-
-Use `tui/flexoki-light.toml` or `tui/flexoki-dark.toml` instead if you prefer
-a fixed appearance. The copy command replaces the whole configuration, so use
-it only when there are no existing settings to preserve.
 
 Validate the configuration:
 
@@ -131,15 +167,32 @@ overrides, so no named base theme is needed in the configuration.
 The themes style Herdr TUI's interface, not the color settings of programs
 running inside its panes.
 
-### Check the theme files
+## Check the theme files
 
 From the repository directory:
 
 ```sh
-for theme in tui/flexoki-*.toml; do
-  HERDR_CONFIG_PATH="$PWD/$theme" herdr config check || exit
-done
+make check
 ```
+
+`make check-tui` runs `herdr config check` against each TOML theme.
+`make check-app` needs [jq](https://jqlang.org); it confirms that each JSON
+theme parses and that every color is a hex value. Herdr itself reports whether
+it accepted an installed theme, as described under
+[Set up Herdr (desktop app)](#set-up-herdr-desktop-app).
+
+## Package the theme files
+
+Set `PREFIX` to copy every theme into a shared directory instead of your own
+configuration, and `DESTDIR` to stage that copy:
+
+```sh
+make install PREFIX=/usr/local
+```
+
+The themes land in `$PREFIX/share/herdr-flexoki/app` and
+`$PREFIX/share/herdr-flexoki/tui`. Neither program reads that directory, so
+set each one up from there as described above.
 
 ## Token mapping and contrast
 

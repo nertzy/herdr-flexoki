@@ -46,11 +46,13 @@ check: check-app check-tui
 
 # Herdr has no offline check for a theme file, so this checks what can be
 # checked without it: the file parses, and every string in it is a color.
+# jq prints the offenders JSON-encoded on one line, so an empty string shows
+# up as "" instead of vanishing in the command substitution.
 check-app: $(APP_THEMES)
 	@for theme in $(APP_THEMES); do \
-		bad=$$(jq -r '.. | strings | select(test("^#[0-9A-Fa-f]{6}([0-9A-Fa-f]{2})?$$") | not)' "$$theme") \
+		bad=$$(jq -r '[.. | strings | select(test("^#[0-9A-Fa-f]{6}([0-9A-Fa-f]{2})?$$") | not) | tojson] | join(" ")' "$$theme") \
 			|| { echo "$$theme: not valid JSON"; exit 1; }; \
-		if [ -n "$$bad" ]; then echo "$$theme: not #rrggbb or #rrggbbaa:" $$bad; exit 1; fi; \
+		if [ -n "$$bad" ]; then printf '%s: not #rrggbb or #rrggbbaa: %s\n' "$$theme" "$$bad"; exit 1; fi; \
 		echo "$$theme: ok"; \
 	done
 

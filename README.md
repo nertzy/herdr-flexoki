@@ -14,7 +14,7 @@ Herdr is two separate programs, and this repository themes both:
 **Herdr (desktop app)**, in [`app/`](app):
 
 | File | Appearance |
-|---|---|
+| --- | --- |
 | [`flexoki-light.json`](app/flexoki-light.json) | Light |
 | [`flexoki-dark.json`](app/flexoki-dark.json) | Dark |
 
@@ -24,7 +24,7 @@ color. Herdr follows the system appearance when given one theme for each.
 **Herdr TUI**, in [`tui/`](tui):
 
 | File | Appearance |
-|---|---|
+| --- | --- |
 | [`flexoki-auto.toml`](tui/flexoki-auto.toml) | Follows your terminal's light/dark appearance |
 | [`flexoki-light.toml`](tui/flexoki-light.toml) | Always light |
 | [`flexoki-dark.toml`](tui/flexoki-dark.toml) | Always dark |
@@ -48,7 +48,7 @@ make install-tui   # Herdr TUI
 ```
 
 | Command | What it does |
-|---|---|
+| --- | --- |
 | `make install` | Copies both desktop app themes into Herdr's themes folder. |
 | `make install-tui` | Copies `tui/flexoki-auto.toml` into place as a new Herdr TUI configuration. It stops without changing anything when a configuration already exists. |
 | `make help` | Lists every target and the paths it writes to on your machine. |
@@ -181,6 +181,9 @@ theme parses and that every color is a hex value. Herdr itself reports whether
 it accepted an installed theme, as described under
 [Set up Herdr (desktop app)](#set-up-herdr-desktop-app).
 
+With [mise](https://mise.jdx.dev), `mise install` provides both `herdr` and
+jq. CI runs the same check on Linux and macOS for every pull request.
+
 ## Package the theme files
 
 Set `PREFIX` to copy every theme into a shared directory instead of your own
@@ -218,7 +221,7 @@ panes have their own colors.
 ### Herdr (desktop app)
 
 | Herdr color | Flexoki role |
-|---|---|
+| --- | --- |
 | `background`, `surface` | `bg`; terminals and cards |
 | `canvas`, `chrome`, `popover` | `bg-2`; the area behind cards, sidebars and bars, menus and dialogs |
 | `hover`, `border` | `ui` |
@@ -247,7 +250,7 @@ row, where canonical `tx-2` falls to about 3.5:1. `dim` therefore uses
 again, which keeps the two levels distinct. Measured contrast for `dim`:
 
 | Surface | Light | Dark |
-|---|---|---|
+| --- | --- | --- |
 | Sidebar (`bg-2`) | 6.4:1 | 6.3:1 |
 | Current row (`ui-2`) | 5.1:1 | 4.7:1 |
 
@@ -259,7 +262,7 @@ Herdr TUI's renderer controls text modifiers such as bold and `DIM`; these TOML
 files cannot disable them.
 
 | Herdr TUI token | Flexoki role |
-|---|---|
+| --- | --- |
 | `panel_bg`, `sidebar_bg` | `bg`, `bg-2` |
 | `surface0`, `surface1` | `ui`, `ui-2` |
 | `surface_dim` | `ui`; Herdr TUI uses it for sidebar dividers |

@@ -1,0 +1,7 @@
+# The tools `make check` needs. `mise install` provides them.
+[settings]
+minimum_release_age = "1d"
+
+[tools]
+herdr = "latest"
+jq = "latest"

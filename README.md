@@ -8,9 +8,9 @@ inky dark surfaces, and restrained color, with cyan accents.
 
 | File | Appearance |
 |---|---|
-| [`flexoki-auto.toml`](flexoki-auto.toml) | Follows your terminal's light/dark appearance |
-| [`flexoki-light.toml`](flexoki-light.toml) | Always light |
-| [`flexoki-dark.toml`](flexoki-dark.toml) | Always dark |
+| [`flexoki-auto.toml`](tui/flexoki-auto.toml) | Follows your terminal's light/dark appearance |
+| [`flexoki-light.toml`](tui/flexoki-light.toml) | Always light |
+| [`flexoki-dark.toml`](tui/flexoki-dark.toml) | Always dark |
 
 Tested with Herdr 0.9.0. Each palette supplies all 19 customizable color tokens.
 The light theme uses Flexoki's 600-level accent colors; the dark theme uses its
@@ -38,12 +38,12 @@ TOML tables are invalid.
 
 ```sh
 mkdir -p ~/.config/herdr
-cp flexoki-auto.toml ~/.config/herdr/config.toml
+cp tui/flexoki-auto.toml ~/.config/herdr/config.toml
 ```
 
-Use `flexoki-light.toml` or `flexoki-dark.toml` instead if you prefer a fixed
-appearance. The copy command replaces the whole configuration, so use it only
-when there are no existing settings to preserve.
+Use `tui/flexoki-light.toml` or `tui/flexoki-dark.toml` instead if you prefer
+a fixed appearance. The copy command replaces the whole configuration, so use
+it only when there are no existing settings to preserve.
 
 Validate the configuration:
 
